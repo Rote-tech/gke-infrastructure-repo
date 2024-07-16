@@ -23,14 +23,14 @@ variable "github_email" {
   default = "YOUR_GITHUB_EMAIL"
 }
 variable "github_org" {
-  default = "Rote-tech"
+  default = "YOUR_GITHUB_ORG"
 }
 variable "github_token" {
   description = "The access token that should be used for authenticating to GitHub."
   sensitive = true
 }
 variable "acm_repo" {
-  default = "acm-gke-infrastructure-repo"
+  default = "YOUR_ACM_REPO"
 }
 variable "env" {
   default = "prod"
@@ -49,7 +49,7 @@ variable "subnet_01_ip" {
   default = "10.40.0.0/22"
 }
 variable "subnet_01_region" {
-  default = "us-central1"
+  default = "YOUR_REGION"
 }
 variable "subnet_01_description" {
   default = "subnet 01"
@@ -61,7 +61,7 @@ variable "subnet_02_ip" {
   default = "10.12.0.0/22"
 }
 variable "subnet_02_region" {
-  default = "us-west1"
+  default = "YOUR_SECONDARY_REGION"
 }
 variable "subnet_02_description" {
   default = "subnet 02"
