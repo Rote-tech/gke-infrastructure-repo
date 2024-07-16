@@ -41,7 +41,7 @@ data "google_secret_manager_secret_version" "cloud-deploy" {
 }
 
 module "create-vpc" {
-  source = "git::https://github.com/YOUR_GITHUB_ORG/terraform-modules.git//vpc/"
+  source = "git::https://github.com/Rote-tech/terraform-modules.git//vpc/"
   project_id   = var.project_id
   network_name    = var.network_name
   routing_mode    = var.routing_mode
@@ -69,7 +69,7 @@ module "create-vpc" {
 
 # Create GKE zonal cluster in platform_admin project using subnet-01 zone a
 module "create_gke_1" {
-  source            = "git::https://github.com/YOUR_GITHUB_ORG/terraform-modules.git//gke/"
+  source            = "git::https://github.com/Rote-tech/terraform-modules.git//gke/"
   subnet            = (local.subnet1.region ==  var.subnet_01_region) ? local.subnet1 : local.subnet2
   project_id        = var.project_id
   suffix            = "1"
@@ -82,7 +82,7 @@ module "create_gke_1" {
 }
 
 module "acm" {
-  source                = "git::https://github.com/YOUR_GITHUB_ORG/terraform-modules.git//acm/"
+  source                = "git::https://github.com/Rote-tech/terraform-modules.git//acm/"
   gke_cluster_id        = local.gke_cluster_id
   gke_cluster_name      = module.create_gke_1.cluster_name.name
   env                   = var.env
@@ -96,7 +96,7 @@ module "acm" {
 }
 
 module "artifact-registry-iam" {
-  source                = "git::https://github.com/YOUR_GITHUB_ORG/terraform-modules.git//artifact-registry/render"
+  source                = "git::https://github.com/Rote-tech/terraform-modules.git//artifact-registry/render"
   git_user              = var.github_user
   git_email             = var.github_email
   git_org               = var.github_org
@@ -107,7 +107,7 @@ module "artifact-registry-iam" {
 }
 
 module "landing-zone-template" {
-  source                = "git::https://github.com/YOUR_GITHUB_ORG/terraform-modules.git//landing-zone/render"
+  source                = "git::https://github.com/Rote-tech/terraform-modules.git//landing-zone/render"
   git_user              = var.github_user
   git_email             = var.github_email
   git_org               = var.github_org
@@ -120,7 +120,7 @@ module "landing-zone-template" {
 }
 
 module "cloud-deploy-target" {
-  source                = "git::https://github.com/YOUR_GITHUB_ORG/terraform-modules.git//cloud-deploy-targets"
+  source                = "git::https://github.com/Rote-tech/terraform-modules.git//cloud-deploy-targets"
   location              = var.subnet_01_region
   name                  = var.env
   cluster_name          = local.gke_cluster_id //module.create_gke_1.cluster_name.name
