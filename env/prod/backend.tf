@@ -16,7 +16,7 @@
 
 terraform {
   backend "gcs" {
-    bucket = "YOUR_PLATFORM_INFRA_TERRAFORM_STATE_BUCKET"
+    bucket = "infra-touch-multi-tenant-platform-tf-state"
     prefix = "software-delivery-platform-infra-prod"
   }
 }
