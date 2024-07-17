@@ -32,7 +32,7 @@ locals {
 }
 
 module "create-gcp-project" {
-  source = "git::https://github.com/Rote-tech/terraform-modules.git//project/"
+  source = "git::https://github.com/YOUR_GITHUB_ORG/terraform-modules.git//project/"
   base_project_name = var.base_project_name
   billing_account = var.billing_account
   org_id = var.org_id
@@ -49,7 +49,7 @@ module "create-gcp-project" {
 }
 
 module "create-vpc" {
-  source = "git::https://github.com/Rote-tech/terraform-modules.git//vpc/"
+  source = "git::https://github.com/YOUR_GITHUB_ORG/terraform-modules.git//vpc/"
   project_id   = module.create-gcp-project.project.project_id
   network_name    = var.network_name
   routing_mode    = var.routing_mode
@@ -77,7 +77,7 @@ module "create-vpc" {
 
 # Create GKE zonal cluster in platform_admin project using subnet-01 zone a
 module "create_gke_1" {
-  source            = "git::https://github.com/Rote-tech/terraform-modules.git//gke/"
+  source            = "git::https://github.com/YOUR_GITHUB_ORG/terraform-modules.git//gke/"
   subnet            = (local.subnet1.region ==  var.subnet_01_region) ? local.subnet1 : local.subnet2
   project_id        = module.create-gcp-project.project.project_id
   suffix            = "1"
@@ -88,7 +88,7 @@ module "create_gke_1" {
 }
 
 module "deploy-cloud-function" {
-  source                = "git::https://github.com/Rote-tech/terraform-modules.git//cloud-functions/grant-deploy-access"
+  source                = "git::https://github.com/YOUR_GITHUB_ORG/terraform-modules.git//cloud-functions/grant-deploy-access"
   project_id            = module.create-gcp-project.project.project_id
   function_name         = "add-deploy-permission-${var.env}"
   function_gcs          = "add-deploy-permission-${var.env}-src"
@@ -102,7 +102,7 @@ module "deploy-cloud-function" {
 }
 
 module "acm" {
-  source                = "git::https://github.com/Rote-tech/terraform-modules.git//acm/"
+  source                = "git::https://github.com/YOUR_GITHUB_ORG/terraform-modules.git//acm/"
   gke_cluster_id        = local.gke_cluster_id
   gke_cluster_name      = module.create_gke_1.cluster_name.name
   env                   = var.env
@@ -115,7 +115,7 @@ module "acm" {
 }
 
 module "artifact-registry-iam" {
-  source                = "git::https://github.com/Rote-tech/terraform-modules.git//artifact-registry/render"
+  source                = "git::https://github.com/YOUR_GITHUB_ORG/terraform-modules.git//artifact-registry/render"
   git_user              = var.github_user
   git_email             = var.github_email
   git_org               = var.github_org
@@ -126,7 +126,7 @@ module "artifact-registry-iam" {
 }
 
 module "cloud-deploy-target" {
-  source                = "git::https://github.com/Rote-tech/terraform-modules.git//cloud-deploy-targets/render"
+  source                = "git::https://github.com/YOUR_GITHUB_ORG/terraform-modules.git//cloud-deploy-targets/render"
   git_user              = var.github_user
   git_email             = var.github_email
   git_org               = var.github_org
@@ -141,7 +141,7 @@ module "cloud-deploy-target" {
 }
 
 module "landing-zone-template" {
-  source                = "git::https://github.com/Rote-tech/terraform-modules.git//landing-zone/render"
+  source                = "git::https://github.com/YOUR_GITHUB_ORG/terraform-modules.git//landing-zone/render"
   git_user              = var.github_user
   git_email             = var.github_email
   git_org               = var.github_org
