@@ -22,7 +22,7 @@ variable "env" {
 }
 
 variable "acm_repo" {
-  default = "YOUR_ACM_REPO"
+  default = "acm-gke-infrastructure-repo"
   description = "Repo that will be used for ACM"
 }
 variable "github_user" {
@@ -57,7 +57,7 @@ variable "subnet_01_ip" {
   default = "10.40.0.0/22"
 }
 variable "subnet_01_region" {
-  default = "YOUR_REGION"
+  default = "us-central1"
 }
 variable "subnet_01_description" {
   default = "subnet 01 in"
@@ -69,7 +69,7 @@ variable "subnet_02_ip" {
   default = "10.12.0.0/22"
 }
 variable "subnet_02_region" {
-  default = "YOUR_SECONDARY_REGION"
+  default = "us-west1"
 }
 variable "subnet_02_description" {
   default = "subnet 02"
