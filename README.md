@@ -30,7 +30,7 @@ changes into the staging and production environments.
 
 The multi-tenant platform repo is connected to a [Cloud Build][cloud-build] trigger in multi-tenant admin project and listens to any push that happens on this repo. When a push happens, the trigger catches the branch where the push happened and executes the Terraform in the corresponding directory under env directory. This results in creation of multi-tenant infrastructure for that environment.
 
-Each environment has their own set of Terraform files under their folder, so
+Testing Each environment has their own set of Terraform files under their folder, so
 you can make customizations in an environment by adding or removing code in
 their files without impacting the other environments. e.g you can add code to
 your dev Terraform files to create a GCS bucket and, it will only be created in
