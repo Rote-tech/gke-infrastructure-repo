@@ -31,9 +31,7 @@ terraform {
     }
   }
   provider_meta "google" {
-    module_name = "cloud-solutions/sdb-v5"
+    module_name = "cloud-solutions/sdb-v1"
   }
 }
-
-
 

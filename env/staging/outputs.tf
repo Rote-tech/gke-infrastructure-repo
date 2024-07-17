@@ -14,6 +14,22 @@
  * limitations under the License.
  */
 
+output "project" {
+  value       = module.create-gcp-project.project
+  description = "The full host project info"
+}
+
+output "project_id" {
+  value       = module.create-gcp-project.project.project_id
+  description = "The ID of the created project"
+}
+
+
+output "project_number" {
+  value       = module.create-gcp-project.project.project_number
+  description = "The ID of the created project"
+}
+
 output "vpc_network" {
   value       = module.create-vpc.network
   description = "The created network"
@@ -34,6 +50,7 @@ output "network_self_link" {
   value       = module.create-vpc.network.network_self_link
   description = "The URI of the VPC being created"
 }
+
 
 output "subnets_names" {
   value       = [module.create-vpc.network.subnets_names]
@@ -103,4 +120,3 @@ output "gke-service-account" {
   value       = module.create_gke_1.cluster_name.service_account
   description = "gke service account"
 }
-

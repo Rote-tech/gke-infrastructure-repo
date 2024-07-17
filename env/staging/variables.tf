@@ -13,27 +13,50 @@
 # limitations under the License.
 
 variable "project_id" {
+  description = "ID of your platform setup project/platform seed project"
+}
+variable "app_factory_project_id" {
   type = string
-  description = "ID of the current project."
+}
+variable "app_factory_project_num" {
+  type = number
+  description = "project number of application factory"
+}
+variable "secrets_project_id" {
+  type = string
+  description = "Project ID of the projects hosting all secrets"
+}
+
+variable "billing_account" {
+  description = "GCP billing account"
+}
+variable "org_id" {
+  description = "GCP org id"
 }
 variable "github_user" {
-  default = "YOUR_GITHUB_USER"
+  type = string
 }
 variable "github_email" {
-  default = "YOUR_GITHUB_EMAIL"
+  type = string
 }
 variable "github_org" {
-  default = "Rote-tech"
+  type = string
 }
 variable "github_token" {
   description = "The access token that should be used for authenticating to GitHub."
   sensitive = true
 }
+variable "folder_id" {
+}
 variable "acm_repo" {
-  default = "acm-gke-infrastructure-repo"
+  type = string
 }
 variable "env" {
   default = "staging"
+}
+variable "base_project_name" {
+  default = "sdp-gke"
+  description = "Name of the project that will host GKE cluster"
 }
 variable "network_name" {
   default = "gke-vpc-network-staging"
@@ -49,7 +72,7 @@ variable "subnet_01_ip" {
   default = "10.40.0.0/22"
 }
 variable "subnet_01_region" {
-  default = "us-central1"
+  description = "primary region where resources will be created"
 }
 variable "subnet_01_description" {
   default = "subnet 01"
@@ -61,7 +84,7 @@ variable "subnet_02_ip" {
   default = "10.12.0.0/22"
 }
 variable "subnet_02_region" {
-  default = "us-west1"
+  description = "secondary region where resources will be created"
 }
 variable "subnet_02_description" {
   default = "subnet 02"
