@@ -76,4 +76,3 @@ agreement with Google.
 [bootstrap]: ../launch-scripts/bootstraps.sh
 [next19-infra-as-code]: https://www.youtube.com/watch?v=3vfXQxWJazM
 [cloud-build]: https://cloud.google.com/build/docs/overview
-
